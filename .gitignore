@@ -7,12 +7,12 @@
 *.log
 *.DS_STORE
 /tmp
-
+/.idea
 # Dependencies
 /node_modules
 
 # Compiled files
-/dist
+
 /lib
 
 # Packaging artifacts
