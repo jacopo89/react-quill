@@ -73,7 +73,7 @@ class Editor extends React.Component {
   }
 
   onSetContents = () => {
-    this.setState({ value: 'This is some <b>fine</b> example content' });
+    this.setState({ value: "<p>This is some <b>fine</b> example content</p>" });
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Quill, { QuillOptionsStatic, DeltaStatic, RangeStatic, BoundsStatic, StringMap, Sources } from 'quill';
+import Quill, { QuillOptionsStatic, DeltaStatic, RangeStatic, BoundsStatic, StringMap, Sources } from 'quill/dist/quill';
 declare namespace ReactQuill {
     type Value = string | DeltaStatic;
     type Range = RangeStatic | null;
@@ -49,7 +49,7 @@ interface ReactQuillState {
 }
 declare class ReactQuill extends React.Component<ReactQuillProps, ReactQuillState> {
     static displayName: string;
-    static Quill: typeof Quill;
+    static Quill: any;
     dirtyProps: (keyof ReactQuillProps)[];
     cleanProps: (keyof ReactQuillProps)[];
     static defaultProps: {
@@ -84,7 +84,7 @@ declare class ReactQuill extends React.Component<ReactQuillProps, ReactQuillStat
     Creates an editor on the given element. The editor will be passed the
     configuration, have its events bound,
     */
-    createEditor(element: Element, config: QuillOptions): Quill;
+    createEditor(element: Element, config: QuillOptions): any;
     hookEditor(editor: Quill): void;
     unhookEditor(editor: Quill): void;
     getEditorContents(): Value;
@@ -96,20 +96,17 @@ declare class ReactQuill extends React.Component<ReactQuillProps, ReactQuillStat
     setEditorTabIndex(editor: Quill, tabIndex: number): void;
     setEditorReadOnly(editor: Quill, value: boolean): void;
     makeUnprivilegedEditor(editor: Quill): {
-        getHTML: () => string;
-        getLength: () => number;
-        getText: (index?: number | undefined, length?: number | undefined) => string;
-        getContents: (index?: number | undefined, length?: number | undefined) => DeltaStatic;
-        getSelection: {
-            (focus: true): RangeStatic;
-            (focus?: false | undefined): Range;
-        };
-        getBounds: (index: number, length?: number | undefined) => BoundsStatic;
+        getHTML: () => any;
+        getLength: any;
+        getText: any;
+        getContents: any;
+        getSelection: any;
+        getBounds: any;
     };
     getEditingArea(): Element;
     renderEditingArea(): JSX.Element;
     render(): JSX.Element;
-    onEditorChange: (eventName: "text-change" | "selection-change", rangeOrDelta: DeltaStatic | RangeStatic | null, oldRangeOrDelta: DeltaStatic | RangeStatic | null, source: Sources) => void;
+    onEditorChange: (eventName: "text-change" | "selection-change", rangeOrDelta: any, oldRangeOrDelta: any, source: any) => void;
     onEditorChangeText(value: string, delta: DeltaStatic, source: Sources, editor: UnprivilegedEditor): void;
     onEditorChangeSelection(nextSelection: RangeStatic, source: Sources, editor: UnprivilegedEditor): void;
     focus(): void;
